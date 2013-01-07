@@ -1,0 +1,157 @@
+label.ui-input-text {
+	display: block;
+	margin: 0 0 .3em;
+	font-weight: 400;
+	@include font-size(16, 1.4);
+}
+
+input.ui-input-text,
+textarea.ui-input-text {
+	display: block;
+	margin: .5em 0;
+	padding: .4em;
+	min-height: 1.4em;
+	width: 100%;
+	outline: 0;
+	background-image: none;
+	font-size: 16px;
+	line-height: 1.4em;
+}
+
+input.ui-mini,
+.ui-mini input,
+textarea.ui-mini {
+	@include font-size(14);
+}
+
+div.ui-input-text input.ui-input-text,
+div.ui-input-text textarea.ui-input-text,
+.ui-input-search input.ui-input-text {
+	display: block;
+	margin: 0;
+	padding: .4em 0;
+	width: 100%;
+	outline: 0!important;
+	border: none;
+	background: transparent none;
+}
+
+.ui-input-search,
+div.ui-input-text {
+	position: relative;
+	margin: .5em 0;
+	background-image: none;
+}
+
+.ui-input-search {
+	padding: 0 30px;
+}
+
+div.ui-input-text {
+	padding: 0 30px 0 .4em;
+}
+
+input.ui-input-text,
+textarea.ui-input-text,
+.ui-input-search
+div.ui-input-text {
+	&.ui-mini {
+		margin: .25em 0;
+	}
+}
+
+.ui-field-contain {
+	input.ui-input-text,
+	textarea.ui-input-text,
+	.ui-input-search,
+	div.ui-input-text {
+		margin: 0;
+	}
+}
+
+
+textarea.ui-input-text {
+	@include box-sizing(border-box);
+}
+
+input.ui-input-text {
+	-webkit-appearance: none;
+}
+
+textarea.ui-input-text {
+	height: 50px;
+	-webkit-transition: height 200ms linear;
+	-moz-transition: height 200ms linear;
+	-o-transition: height 200ms linear;
+	transition: height 200ms linear;
+}
+
+textarea.ui-mini {
+	height: 45px;
+}
+
+.ui-icon-searchfield:after {
+	position: absolute;
+	top: 50%;
+	left: 7px;
+	margin-top: -9px;
+	width: 18px;
+	height: 18px;
+	content: "";
+	opacity: .5;
+}
+
+.ui-input-search,
+.ui-input-text {
+	.ui-input-clear {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		margin-top: -13px;
+	}
+	
+	.ui-input-clear-hidden {
+		display: none;
+	}
+}
+
+.ui-mini .ui-input-clear {
+	right: -3px;
+	margin-top: -14px;
+}
+
+
+/* Resolves issue #5166:  Added to support issue introduced in Firefox 15. We can likely remove this in the future. */
+input: -moz-placeholder {
+	color: #aaa;
+}
+
+/* Resolves issue #5131:  Width of textinput depends on its type, for Android 4.1 */
+input[type=number]:: -webkit-outer-spin-button {
+	margin: 0;
+}
+
+@media all and (min-width:  28em) {
+	.ui-field-contain label.ui-input-text {
+		display: inline-block;
+		margin: 0 2% 0 0;
+		width: 20%;
+		vertical-align: top;
+	}
+	
+	.ui-field-contain input.ui-input-text,
+	.ui-field-contain textarea.ui-input-text,
+	.ui-field-contain .ui-input-search,
+	.ui-field-contain div.ui-input-text {
+		display: inline-block;
+		width: 78%;
+	}
+	
+	.ui-field-contain .ui-input-search,.ui-field-contain div.ui-input-text {
+		@include box-sizing(border-box);
+	}
+	
+	.ui-hide-label input.ui-input-text,.ui-hide-label textarea.ui-input-text,.ui-hide-label .ui-input-search,.ui-hide-label div.ui-input-text,.ui-input-search input.ui-input-text,div.ui-input-text input.ui-input-text {
+		width: 100%;
+	}
+}
