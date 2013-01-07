@@ -10,6 +10,8 @@ compiled/
 tmp/
 *.swp
 .gitignore
+.sass-cache
+.sass-cache/
 
 # branch preview
 branches
