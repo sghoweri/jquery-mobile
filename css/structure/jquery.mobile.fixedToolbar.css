@@ -1,54 +1,75 @@
 /* fixed page header & footer configuration */
+/* line 5, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-header-fixed,
 .ui-footer-fixed {
-	left: 0;
-	right: 0;
-	width: 100%;
-	position: fixed;
-	z-index: 1000;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
 }
+/* line 12, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
+.ui-header-fixed .ui-btn,
+.ui-footer-fixed .ui-btn {
+  z-index: 10;
+}
+
+/* line 17, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-header-fixed {
-	top: -1px;
-	padding-top: 1px;
+  top: -1px;
+  padding-top: 1px;
 }
+/* line 21, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-header-fixed.ui-fixed-hidden {
-	top: 0;
-	padding-top: 0;
+  top: 0;
+  padding-top: 0;
 }
+
+/* line 27, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-footer-fixed {
-	bottom: -1px;
-	padding-bottom: 1px;
+  bottom: -1px;
+  padding-bottom: 1px;
 }
+/* line 31, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-footer-fixed.ui-fixed-hidden {
-	bottom: 0;
-	padding-bottom: 0;
+  bottom: 0;
+  padding-bottom: 0;
 }
+
+/* line 39, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-header-fullscreen,
 .ui-footer-fullscreen {
-	filter: Alpha(Opacity=90);
-	opacity: .9;
+  opacity: .9;
+  filter: Alpha(Opacity=90);
 }
+/* line 43, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
+.ui-header-fullscreen > .ui-content,
+.ui-footer-fullscreen > .ui-content {
+  padding: 0;
+}
+
+/* line 48, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-page-header-fixed {
-	padding-top: 2.6875em;
+  padding-top: 2.6875em;
 }
+
+/* line 52, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-page-footer-fixed {
-	padding-bottom: 2.6875em;
+  padding-bottom: 2.6875em;
 }
-.ui-page-header-fullscreen > .ui-content,
-.ui-page-footer-fullscreen > .ui-content {
-	padding: 0;
-}
+
+/* line 56, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-fixed-hidden {
-	position: absolute;
+  position: absolute;
 }
+
+/* line 62, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-page-header-fullscreen .ui-fixed-hidden,
 .ui-page-footer-fullscreen .ui-fixed-hidden {
-	left: -9999px;
+  left: -9999px;
 }
-.ui-header-fixed .ui-btn,
-.ui-footer-fixed .ui-btn { 
-	z-index: 10;
-}
+
+/* line 67, ../../sass/structure/jquery.mobile.fixedToolbar.scss */
 .ui-android-2x-fixed .ui-li-has-thumb {
-	-webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
