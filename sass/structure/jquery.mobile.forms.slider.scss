@@ -1,0 +1,202 @@
+@import "mixins";
+
+label.ui-slider {
+	display: block;
+	margin: 0 0 .3em;
+	font-weight: 400;
+	
+	@include font-size(16, 1.4);
+}
+
+input.ui-slider-input,
+.ui-field-contain input.ui-slider-input {
+	display: inline-block;
+	margin: .5em 0;
+	padding: .4em;
+	width: 50px;
+	outline: 0;
+	background-image: none;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+input.ui-slider-input.ui-mini,
+.ui-field-contain input.ui-slider-input.ui-mini {
+	margin: .25em 0;
+	width: 45px;
+	font-size: 14px;
+}
+
+.ui-field-contain input.ui-slider-input {
+	margin: 0;
+}
+
+input.ui-slider-input,
+.ui-field-contain input.ui-slider-input {
+	@include box-sizing(content-box);
+}
+
+
+
+/* Fixes input fields being to small on Safari/Mac because of the up and down arrows. */
+.ui-slider-input{
+	@include outer-spin-button-margin(0);
+}
+
+select.ui-slider-switch {
+	display: none;
+}
+
+div.ui-slider {
+	position: relative;
+	top: 4px;
+	display: inline-block;
+	overflow: visible;
+	margin: 0 2% 0 20px;
+	padding: 0;
+	width: 65%;
+	height: 15px;
+}
+
+div.ui-slider-bg {
+	padding-right: 8px;
+	height: 100%;
+	border: none;
+}
+
+.ui-controlgroup a.ui-slider-handle,
+a.ui-btn.ui-slider-handle {
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	margin: -15px 0 0 -15px;
+	width: 28px;
+	height: 28px;
+	outline: 0;
+}
+
+a.ui-btn.ui-slider-handle .ui-btn-inner {
+	padding: 0;
+	height: 100%;
+}
+
+div.ui-slider-mini {
+	top: 2px;
+	margin-left: 10px;
+	height: 12px;
+
+	a.ui-slider-handle {
+		margin: -8px 0 0 -7px;
+		width: 14px;
+		height: 14px;
+		
+		.ui-btn-inner {
+			margin: -9px 0 0 -9px;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+			border-top: none;
+		}
+	}
+}
+
+
+@media all and (min-width:  28em) {
+	.ui-field-contain {
+		label.ui-slider {
+			display: inline-block;
+			margin: 0 2% 0 0;
+			width: 20%;
+			vertical-align: top;
+		}
+		
+		div.ui-slider {
+			width: 43%;
+		}
+		
+		div.ui-slider-switch {
+			width: 5.5em;
+		}
+	}
+}
+
+div.ui-slider-switch {
+	margin-left: 0;
+	width: 5.8em;
+	height: 32px;
+	
+	&.ui-slider-mini {
+		width: 5em;
+		height: 29px;
+		
+		.ui-slider-inneroffset {
+			margin: 0 15px 0 14px;
+		}
+		
+		.ui-slider-handle {
+			margin: 1px 0 0 -13px;
+			width: 25px;
+			height: 25px;
+		}
+		
+		a.ui-slider-handle .ui-btn-inner {
+			margin: 0;
+			padding: 0;
+			width: 30px;
+			height: 30px;
+		}
+	}
+	
+	.ui-slider-handle {
+		margin: 1px 0 0 -15px;
+	}
+}
+
+a.ui-slider-handle-snapping {
+	-webkit-transition: left 70ms linear;
+	-moz-transition: left 70ms linear;
+}
+
+.ui-slider-inneroffset {
+	position: relative;
+	z-index: 1;
+	margin: 0 16px;
+}
+
+
+
+
+span.ui-slider-label {
+	position: absolute;
+	top: 0;
+	overflow: hidden;
+	min-height: 100%;
+	width: 100%;
+	border-width: 0;
+	text-align: center;
+	white-space: nowrap;
+	font-size: 16px;
+	line-height: 2;
+	cursor: pointer;
+}
+
+.ui-slider-mini span.ui-slider-label {
+	font-size: 14px;
+}
+
+span.ui-slider-label-a {
+	left: 0;
+	z-index: 1;
+	text-indent: -1.5em;
+}
+
+span.ui-slider-label-b {
+	right: 0;
+	z-index: 0;
+	text-indent: 1.5em;
+}
+
+.ui-slider-inline {
+	display: inline-block;
+	width: 120px;
+}

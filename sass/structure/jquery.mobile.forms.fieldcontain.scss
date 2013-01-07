@@ -1,0 +1,24 @@
+@import "mixins";
+
+.ui-field-contain,
+fieldset.ui-field-contain {
+	overflow: visible;
+	margin: 0;
+	padding: .8em 0;
+	border-width: 0 0 1px;
+	
+	/* This prevents horizontal scrollbar in IE7 */
+	@media all and (min-width:  28em) {
+		margin: 1em 0;
+		padding: 0;
+		border-width: 0;
+	}
+}
+
+.ui-field-contain {
+	max-width: 100%;
+	
+	&:last-child {
+		border-bottom-width: 0;
+	}
+}

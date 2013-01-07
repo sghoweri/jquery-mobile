@@ -1,0 +1,39 @@
+@import "mixins";
+
+.ui-dialog {
+	background: none!important; /* this is to ensure that dialog theming does not apply (by default at least) on the page div */
+}
+
+.ui-dialog-contain {
+	position: relative;
+	top: -15px;
+	margin: 10% auto 15px;
+	padding: 0;
+	max-width: 500px;
+	width: 92.5%;
+	
+	> .ui-header,
+	> .ui-content,
+	> .ui-footer {
+		position: relative;
+		display: block;
+		margin: 0;
+		width: auto;
+	}
+	
+	> .ui-header {
+		z-index: 10;
+		overflow: hidden;
+		padding: 0;
+		border: none;
+	}
+	
+	> .ui-content {
+		padding: 15px;
+	}
+	
+	> .ui-footer {
+		z-index: 10;
+		padding: 0 15px;
+	}
+}
