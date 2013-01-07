@@ -1,0 +1,34 @@
+//Font Families for directory paths:
+$openSans: "opensans/";
+$oswald: "oswald/";
+$brennan: "brennan/";
+$icomoon: "icomoon-font-icons/";
+$p22declar: "p22-declar/";
+
+
+
+//OpenSans Font Family
+@include font-face("OpenSans Regular", font-files($openSans + "opensans-regular.woff", $openSans + "opensans-regular.ttf"));
+@include font-face("OpenSans Italic", font-files($openSans + "opensans-italic.woff", $openSans + "opensans-italic.ttf"));
+@include font-face("OpenSans Bold", font-files($openSans + "opensans-bold.woff", $openSans + "opensans-bold.ttf"));
+@include font-face("OpenSans Semi-Bold", font-files($openSans + "opensans-semibold.woff", $openSans + "opensans-semibold.ttf"));
+@include font-face("OpenSans Semi-Bold Italic", font-files($openSans + "opensans-semibold-italic.woff", $openSans + "opensans-semibold-italic.ttf"));
+
+
+//Oswald Font Family
+@include font-face("Oswald Regular", font-files($oswald + "oswald-regular.woff", $oswald + "oswald-regular.ttf"));
+@include font-face("Oswald Bold", font-files($oswald + "oswald-bold.woff", $oswald + "opensans-bold.ttf"));
+@include font-face("Oswald Light", font-files($oswald + "oswald-light.woff", $oswald + "oswald-light.ttf"));
+
+
+//P22 Declaration Script
+@include font-face("P22Declaration", font-files($p22declar + "p22declar.woff", $p22declar + "p22declar.ttf"));
+
+
+//Brenan Regular
+@include font-face("Brennan Regular", font-files($brennan + "brennan.woff", $brennan + "brennan.ttf"));
+
+
+//Icomoon Icon Font
+@include font-face("Icomoon", font-files($icomoon + "icomoon.woff", $icomoon + "icomoon.ttf"));
+
