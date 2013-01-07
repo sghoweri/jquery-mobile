@@ -1,0 +1,82 @@
+/* links within "buttons" 
+-----------------------------------------------------------------------------------------------------------*/
+
+a.ui-link-inherit {
+	text-decoration: none !important;
+}
+
+
+
+
+
+
+
+
+/* Active class used as the "on" state across all themes
+-----------------------------------------------------------------------------------------------------------*/
+.ui-btn-active {
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+	font-weight: bold;
+	color: 					#fff /*{global-active-color}*/;
+	cursor: pointer;
+
+	text-shadow: 0 /*{global-active-shadow-x}*/ 1px /*{global-active-shadow-y}*/ 1px /*{global-active-shadow-radius}*/ #3373a5 /*{global-active-shadow-color}*/;
+	text-decoration: none;
+
+	border: 1px solid 		#2373a5 /*{global-active-border}*/;
+
+	background: 			#5393c5 /*{global-active-background-color}*/;
+	@include background-image(linear-gradient(#5393c5, #6facd5));
+	
+}
+.ui-btn-active:visited,
+.ui-btn-active:hover,
+.ui-btn-active a.ui-link-inherit {
+	color: 					#fff /*{global-active-color}*/;
+}
+
+
+
+
+
+
+
+/* button inner top highlight
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-inner {
+	border-top: 1px solid 	#fff;
+	border-color: 			rgba(255,255,255,.3);
+}
+
+
+
+
+
+
+
+
+
+/* corner rounding classes
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-corner-all {
+	@include border-radius(.6em); /*{global-radii-blocks}*/
+}
+
+
+
+
+/* Button corner classes
+-----------------------------------------------------------------------------------------------------------*/
+.ui-btn-corner-all {
+	@include border-radius(1em); /*{global-radii-blocks}*/
+}
+
+
+
+/* radius clip workaround for cleaning up corner trapping */
+.ui-corner-all,
+.ui-btn-corner-all {
+	@include background-clip(padding-box);
+}
