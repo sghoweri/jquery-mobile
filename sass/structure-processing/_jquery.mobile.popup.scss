@@ -1,0 +1,122 @@
+.ui-popup-open .ui-header-fixed,.ui-popup-open .ui-footer-fixed {
+	position: absolute!important;
+/* See line #553 of popup.js */
+}
+
+.ui-popup-screen {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 1px;
+	left: 0;
+	z-index: 1099;
+	background-image: url(data: image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==);
+/* Necessary to set some form of background to ensure element is clickable in IE6/7. While legacy IE won't understand the data-URI'd image, it ensures no additional requests occur in all other browsers with little overhead. */
+	opacity: 0;
+	filter: Alpha(Opacity=0);
+}
+
+.ui-popup-screen.in {
+	opacity: .5;
+	filter: Alpha(Opacity=50);
+}
+
+.ui-popup-screen.out {
+	opacity: 0;
+	filter: Alpha(Opacity=0);
+}
+
+.ui-popup-container {
+	position: absolute;
+	z-index: 1100;
+	display: inline-block;
+	padding: 0;
+	outline: 0;
+}
+
+.ui-popup {
+	position: relative;
+}
+
+.ui-popup.ui-content,.ui-popup .ui-content {
+	overflow: visible;
+}
+
+.ui-popup > p,.ui-popup > h1,.ui-popup > h2,.ui-popup > h3,.ui-popup > h4,.ui-popup > h5,.ui-popup > h6 {
+	margin: .5em 7px;
+}
+
+.ui-popup > span {
+	display: block;
+	margin: .5em 7px;
+}
+
+.ui-popup .ui-title {
+	margin-top: .5em;
+	margin-bottom: .5em;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.ui-popup-container .ui-content > p,.ui-popup-container .ui-content > h1,.ui-popup-container .ui-content > h2,.ui-popup-container .ui-content > h3,.ui-popup-container .ui-content > h4,.ui-popup-container .ui-content > h5,.ui-popup-container .ui-content > h6 {
+	margin: .5em 0;
+}
+
+.ui-popup-container .ui-content > span {
+	margin: 0;
+}
+
+.ui-popup-container .ui-content > p: first-child,.ui-popup-container .ui-content > h1: first-child,.ui-popup-container .ui-content > h2: first-child,.ui-popup-container .ui-content > h3: first-child,.ui-popup-container .ui-content > h4: first-child,.ui-popup-container .ui-content > h5: first-child,.ui-popup-container .ui-content > h6: first-child {
+	margin-top: 0;
+}
+
+.ui-popup-container .ui-content > p: last-child,.ui-popup-container .ui-content > h1: last-child,.ui-popup-container .ui-content > h2: last-child,.ui-popup-container .ui-content > h3: last-child,.ui-popup-container .ui-content > h4: last-child,.ui-popup-container .ui-content > h5: last-child,.ui-popup-container .ui-content > h6: last-child {
+	margin-bottom: 0;
+}
+
+.ui-popup > img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+}
+
+.ui-popup iframe {
+	vertical-align: middle;
+}
+
+@media all and (min-width: 28em) {
+	.ui-popup .ui-field-contain label.ui-submit,.ui-popup .ui-field-contain .ui-controlgroup-label,.ui-popup .ui-field-contain label.ui-select,.ui-popup .ui-field-contain label.ui-input-text {
+		display: block;
+		margin: 0 0 .3em;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 1.4;
+	}
+	
+	.ui-popup .ui-field-contain .ui-btn.ui-submit,.ui-popup .ui-field-contain .ui-controlgroup-controls,.ui-popup .ui-field-contain .ui-select,.ui-popup .ui-field-contain input.ui-input-text,.ui-popup .ui-field-contain textarea.ui-input-text,.ui-popup .ui-field-contain .ui-input-search {
+		display: block;
+		width: 100%;
+	}
+}
+
+.ui-popup > .ui-btn-left,.ui-popup > .ui-btn-right {
+	position: absolute;
+	top: -9px;
+	z-index: 1101;
+	margin: 0;
+}
+
+.ui-popup > .ui-btn-left {
+	left: -9px;
+}
+
+.ui-popup > .ui-btn-right {
+	right: -9px;
+}
+
+.ui-popup-hidden {
+	top: -99999px;
+	left: -9999px;
+}

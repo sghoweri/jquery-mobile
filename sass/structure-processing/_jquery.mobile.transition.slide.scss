@@ -1,0 +1,48 @@
+@import jquery.mobile.transition.slidein.keyframes;
+
+@import jquery.mobile.transition.slideout.keyframes;
+
+.slide.out,.slide.in {
+	-webkit-animation-duration:350ms;
+	-moz-animation-duration:350ms;
+	animation-duration:350ms;
+	-webkit-animation-timing-function:ease-out;
+	-moz-animation-timing-function:ease-out;
+	animation-timing-function:ease-out;
+}
+
+.slide.out {
+	-webkit-transform:translateX(-100%);
+	-moz-transform:translateX(-100%);
+	transform:translateX(-100%);
+	-webkit-animation-name:slideouttoleft;
+	-moz-animation-name:slideouttoleft;
+	animation-name:slideouttoleft;
+}
+
+.slide.in {
+	-webkit-transform:translateX(0);
+	-moz-transform:translateX(0);
+	transform:translateX(0);
+	-webkit-animation-name:slideinfromright;
+	-moz-animation-name:slideinfromright;
+	animation-name:slideinfromright;
+}
+
+.slide.out.reverse {
+	-webkit-transform:translateX(100%);
+	-moz-transform:translateX(100%);
+	transform:translateX(100%);
+	-webkit-animation-name:slideouttoright;
+	-moz-animation-name:slideouttoright;
+	animation-name:slideouttoright;
+}
+
+.slide.in.reverse {
+	-webkit-transform:translateX(0);
+	-moz-transform:translateX(0);
+	transform:translateX(0);
+	-webkit-animation-name:slideinfromleft;
+	-moz-animation-name:slideinfromleft;
+	animation-name:slideinfromleft;
+}

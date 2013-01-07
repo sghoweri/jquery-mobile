@@ -1,0 +1,231 @@
+/* flow transition */
+.flow {
+	-webkit-box-shadow:0 0 20px rgba(0,0,0,.4);
+	-moz-box-shadow:0 0 20px rgba(0,0,0,.4);
+	box-shadow:0 0 20px rgba(0,0,0,.4);
+	-webkit-transform-origin:50% 30%;
+	-moz-transform-origin:50% 30%;
+	transform-origin:50% 30%;
+}
+
+.ui-dialog.flow {
+	-webkit-box-shadow:none;
+	-moz-box-shadow:none;
+	box-shadow:none;
+	-webkit-transform-origin:none;
+	-moz-transform-origin:none;
+	transform-origin:none;
+}
+
+.flow.out {
+	-webkit-transform:translateX(-100%) scale(.7);
+	-moz-transform:translateX(-100%) scale(.7);
+	transform:translateX(-100%) scale(.7);
+	-webkit-animation-name:flowouttoleft;
+	-moz-animation-name:flowouttoleft;
+	animation-name:flowouttoleft;
+	-webkit-animation-duration:350ms;
+	-moz-animation-duration:350ms;
+	animation-duration:350ms;
+	-webkit-animation-timing-function:ease;
+	-moz-animation-timing-function:ease;
+	animation-timing-function:ease;
+}
+
+.flow.in {
+	-webkit-transform:translateX(0) scale(1);
+	-moz-transform:translateX(0) scale(1);
+	transform:translateX(0) scale(1);
+	-webkit-animation-name:flowinfromright;
+	-moz-animation-name:flowinfromright;
+	animation-name:flowinfromright;
+	-webkit-animation-duration:350ms;
+	-moz-animation-duration:350ms;
+	animation-duration:350ms;
+	-webkit-animation-timing-function:ease;
+	-moz-animation-timing-function:ease;
+	animation-timing-function:ease;
+}
+
+.flow.out.reverse {
+	-webkit-transform:translateX(100%);
+	-moz-transform:translateX(100%);
+	transform:translateX(100%);
+	-webkit-animation-name:flowouttoright;
+	-moz-animation-name:flowouttoright;
+	animation-name:flowouttoright;
+}
+
+.flow.in.reverse {
+	-webkit-animation-name:flowinfromleft;
+	-moz-animation-name:flowinfromleft;
+	animation-name:flowinfromleft;
+}
+
+@-webkit-keyframes flowouttoleft {
+	0% {
+		-webkit-transform:translateX(0) scale(1);
+	}
+	
+	60%,70% {
+		-webkit-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-webkit-transform:translateX(-100%) scale(.7);
+	}
+}
+
+@-moz-keyframes flowouttoleft {
+	0% {
+		-moz-transform:translateX(0) scale(1);
+	}
+	
+	60%,70% {
+		-moz-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-moz-transform:translateX(-100%) scale(.7);
+	}
+}
+
+@keyframes flowouttoleft {
+	0% {
+		transform:translateX(0) scale(1);
+	}
+	
+	60%,70% {
+		transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		transform:translateX(-100%) scale(.7);
+	}
+}
+
+@-webkit-keyframes flowouttoright {
+	0% {
+		-webkit-transform:translateX(0) scale(1);
+	}
+	
+	60%,70% {
+		-webkit-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-webkit-transform:translateX(100%) scale(.7);
+	}
+}
+
+@-moz-keyframes flowouttoright {
+	0% {
+		-moz-transform:translateX(0) scale(1);
+	}
+	
+	60%,70% {
+		-moz-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-moz-transform:translateX(100%) scale(.7);
+	}
+}
+
+@keyframes flowouttoright {
+	0% {
+		transform:translateX(0) scale(1);
+	}
+	
+	60%,70% {
+		transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		transform:translateX(100%) scale(.7);
+	}
+}
+
+@-webkit-keyframes flowinfromleft {
+	0% {
+		-webkit-transform:translateX(-100%) scale(.7);
+	}
+	
+	30%,40% {
+		-webkit-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-webkit-transform:translateX(0) scale(1);
+	}
+}
+
+@-moz-keyframes flowinfromleft {
+	0% {
+		-moz-transform:translateX(-100%) scale(.7);
+	}
+	
+	30%,40% {
+		-moz-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-moz-transform:translateX(0) scale(1);
+	}
+}
+
+@keyframes flowinfromleft {
+	0% {
+		transform:translateX(-100%) scale(.7);
+	}
+	
+	30%,40% {
+		transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		transform:translateX(0) scale(1);
+	}
+}
+
+@-webkit-keyframes flowinfromright {
+	0% {
+		-webkit-transform:translateX(100%) scale(.7);
+	}
+	
+	30%,40% {
+		-webkit-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-webkit-transform:translateX(0) scale(1);
+	}
+}
+
+@-moz-keyframes flowinfromright {
+	0% {
+		-moz-transform:translateX(100%) scale(.7);
+	}
+	
+	30%,40% {
+		-moz-transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		-moz-transform:translateX(0) scale(1);
+	}
+}
+
+@keyframes flowinfromright {
+	0% {
+		transform:translateX(100%) scale(.7);
+	}
+	
+	30%,40% {
+		transform:translateX(0) scale(.7);
+	}
+	
+	100% {
+		transform:translateX(0) scale(1);
+	}
+}
