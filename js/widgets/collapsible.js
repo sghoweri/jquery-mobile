@@ -5,11 +5,9 @@
 //>>css.structure: ../css/structure/jquery.mobile.collapsible.css
 //>>css.theme: ../css/themes/default/jquery.mobile.theme.css
 
-define( [ "jquery", "../jquery.mobile.widget", "../jquery.mobile.buttonMarkup", "../jquery.mobile.registry" ], function( jQuery ) {
+define( [ "jquery", "../jquery.mobile.widget", "../jquery.mobile.buttonMarkup" ], function( jQuery ) {
 //>>excludeEnd("jqmBuildExclude");
 (function( $, undefined ) {
-
-var getAttr = $.mobile.getAttribute;
 
 $.widget( "mobile.collapsible", $.mobile.widget, {
 	options: {
@@ -24,170 +22,163 @@ $.widget( "mobile.collapsible", $.mobile.widget, {
 		contentTheme: null,
 		inset: true,
 		corners: true,
-		mini: false
+		mini: false,
+		direction: "vertical",
+		markup: true,
+		initSelector: ":jqmData(role='collapsible')"
 	},
-
 	_create: function() {
+		this.refresh( true );
+	},
+	
+	refresh: function ( create ) {
 		var $el = this.element,
 			o = this.options,
-			collapsiblesetWidgetSelector = ( $.mobile.collapsibleset ? ", :mobile-collapsibleset" : "" ),
 			collapsible = $el.addClass( "ui-collapsible" ),
 			collapsibleHeading = $el.children( o.heading ).first(),
-			collapsibleContent = collapsible.wrapInner( "<div class='ui-collapsible-content'></div>" ).children( ".ui-collapsible-content" ),
-			collapsibleSet = $el.closest( ":jqmData(role='collapsible-set')" + collapsiblesetWidgetSelector ).addClass( "ui-collapsible-set" ),
+			collapsibleContent = collapsible.children( ".ui-collapsible-content" ),
+			collapsibleSet = $el.closest( ":jqmData(role='collapsible-set')" ).addClass( "ui-collapsible-set" ),
 			collapsibleClasses = "";
 
-		// Replace collapsibleHeading if it's a legend
-		if ( collapsibleHeading.is( "legend" ) ) {
-			collapsibleHeading = $( "<div role='heading'>"+ collapsibleHeading.html() +"</div>" ).insertBefore( collapsibleHeading );
-			collapsibleHeading.next().remove();
+		// xxx markup
+		if ( $el.jqmData("markup") === false ){
+			o.markup = false;	
 		}
 
-		// If we are in a collapsible set
-		if ( collapsibleSet.length ) {
-			// Inherit the theme from collapsible-set
-			if ( !o.theme ) {
-				o.theme = getAttr( collapsibleSet[ 0 ], "theme", true ) || $.mobile.getInheritedTheme( collapsibleSet, "c" );
-			}
-			// Inherit the content-theme from collapsible-set
-			if ( !o.contentTheme ) {
-				o.contentTheme = getAttr( collapsibleSet[ 0 ], "content-theme", true );
-			}
+		if ( o.markup !== false ){
 
-			// Get the preference for collapsed icon in the set, but override with data- attribute on the individual collapsible
-			o.collapsedIcon = getAttr( $el[ 0 ], "collapsed-icon", true ) || getAttr( collapsibleSet[ 0 ], "collapsed-icon", true ) || o.collapsedIcon;
+			// If we are in a collapsible set
+			if ( collapsibleSet.length ) {
+				// Inherit the theme from collapsible-set
+				if ( !o.theme ) {
+					o.theme = collapsibleSet.jqmData( "theme" ) || $.mobile.getInheritedTheme( collapsibleSet, "c" );
+				}
+				// Inherit the content-theme from collapsible-set
+				if ( !o.contentTheme ) {
+					o.contentTheme = collapsibleSet.jqmData( "content-theme" );
+				}
+				if ( collapsibleSet.jqmData("type") == "horizontal" ){
+					o.direction = "horizontal";
+				}
 
-			// Get the preference for expanded icon in the set, but override with data- attribute on the individual collapsible
-			o.expandedIcon = getAttr( $el[ 0 ], "expanded-icon", true ) || getAttr( collapsibleSet[ 0 ], "expanded-icon", true ) || o.expandedIcon;
+				// Get the preference for collapsed icon in the set, but override with data- attribute on the individual collapsible
+				o.collapsedIcon = $el.jqmData( "collapsed-icon" ) || collapsibleSet.jqmData( "collapsed-icon" ) || ( o.direction == "horizontal" ? undefined : o.collapsedIcon ); 
+				
+				
+				
+				// Get the preference for expanded icon in the set, but override with data- attribute on the individual collapsible
+				o.expandedIcon = $el.jqmData( "expanded-icon" ) || collapsibleSet.jqmData( "expanded-icon" ) || ( o.direction == "horizontal" ? undefined : o.expandedIcon );
 
-			// Gets the preference icon position in the set, but override with data- attribute on the individual collapsible
-			o.iconpos = getAttr( $el[ 0 ], "iconpos", true ) || getAttr( collapsibleSet[ 0 ], "iconpos", true ) || o.iconpos;
-
-			// Inherit the preference for inset from collapsible-set or set the default value to ensure equalty within a set
-			if ( getAttr( collapsibleSet[ 0 ], "inset", true ) !== undefined ) {
-				o.inset = getAttr( collapsibleSet[ 0 ], "inset", true );
+				// Gets the preference icon position in the set, but override with data- attribute on the individual collapsible
+				o.iconpos = $el.jqmData( "iconpos" ) || collapsibleSet.jqmData( "iconpos" ) || o.iconpos;
+				// Inherit the preference for inset from collapsible-set or set the default value to ensure equalty within a set
+				if ( collapsibleSet.jqmData( "inset" ) !== undefined ) {
+					o.inset = collapsibleSet.jqmData( "inset" );
+				} else {
+					o.inset = true;
+				}
+				// Set corners for individual collapsibles to false when in a collapsible-set
+				o.corners = false;
+				// Gets the preference for mini in the set
+				if ( !o.mini ) {
+					o.mini = collapsibleSet.jqmData( "mini" );
+				}
+				// Replace collapsibleHeading if it's a legend
+				if ( collapsibleHeading.is( "legend" ) ) {
+					collapsibleHeading = $( "<div role='heading'>"+ collapsibleHeading.html() +"</div>" ).insertBefore( collapsibleHeading );
+					collapsibleHeading.next().remove();
+				}
 			} else {
-				o.inset = true;
+				// get inherited theme if not a set and no theme has been set
+				if ( !o.theme ) {
+					o.theme = $.mobile.getInheritedTheme( $el, "c" );
+				}
 			}
-			// Set corners for individual collapsibles to false when in a collapsible-set
-			o.corners = false;
-			// Gets the preference for mini in the set
-			if ( !o.mini ) {
-				o.mini = getAttr( collapsibleSet[ 0 ], "mini", true );
+			if ( !!o.inset ) {
+				collapsibleClasses += " ui-collapsible-inset";
+				if ( !!o.corners ) {
+					collapsibleClasses += " ui-corner-all" ;
+				}
 			}
-		} else {
-			// get inherited theme if not a set and no theme has been set
-			if ( !o.theme ) {
-				o.theme = $.mobile.getInheritedTheme( $el, "c" );
-			}
-		}
+			// xxx tabs - wrap here
+			collapsibleContent = collapsible.wrapInner( "<div class='ui-collapsible-content'></div>" ).children( ".ui-collapsible-content" );
 
-		if ( !!o.inset ) {
-			collapsibleClasses += " ui-collapsible-inset";
-			if ( !!o.corners ) {
-				collapsibleClasses += " ui-corner-all" ;
+			if ( o.contentTheme ) {
+				collapsibleClasses += " ui-collapsible-themed-content";
+				collapsibleContent.addClass( "ui-body-" + o.contentTheme );
 			}
+			if ( collapsibleClasses !== "" ) {
+				collapsible.addClass( collapsibleClasses );
+			}
+			collapsibleHeading
+				//drop heading in before content
+				.insertBefore( collapsibleContent )
+				//modify markup & attributes
+				.addClass( "ui-collapsible-heading" )
+				.append( "<span class='ui-collapsible-heading-status'></span>" )
+				.wrapInner( "<a href='#' class='ui-collapsible-heading-toggle'></a>" )
+				.find( "a" )
+					.first()
+					.buttonMarkup({
+						shadow: false,
+						corners: false,
+						iconpos: o.collapsedIcon == undefined ? null : o.iconpos,
+						icon: o.collapsedIcon,
+						mini: o.mini,
+						theme: o.theme
+					});
 		}
-		if ( o.contentTheme ) {
-			collapsibleClasses += " ui-collapsible-themed-content";
-			collapsibleContent.addClass( "ui-body-" + o.contentTheme );
-		}
-		if ( collapsibleClasses !== "" ) {
-			collapsible.addClass( collapsibleClasses );
-		}
-
-		collapsibleHeading
-			//drop heading in before content
-			.insertBefore( collapsibleContent )
-			//modify markup & attributes
-			.addClass( "ui-collapsible-heading" )
-			.append( "<span class='ui-collapsible-heading-status'></span>" )
-			.wrapInner( "<a href='#' class='ui-collapsible-heading-toggle'></a>" )
-			.find( "a" )
-				.first()
-				.buttonMarkup({
-					shadow: false,
-					corners: false,
-					iconpos: o.iconpos,
-					icon: o.collapsedIcon,
-					mini: o.mini,
-					theme: o.theme
-				});
-
-		$.extend( this, {
-			_collapsibleHeading: collapsibleHeading,
-			_collapsibleContent: collapsibleContent
-		});
 
 		//events
-		this._on({
-			"expand": "_handleExpandCollapse",
-			"collapse": "_handleExpandCollapse"
-		});
+		collapsible
+			.bind( "expand collapse", function( event ) {
+				if ( !event.isDefaultPrevented() ) {
+					var $this = $( this ),
+						isCollapse = ( event.type === "collapse" );
 
-		this._on( collapsibleHeading, {
-			"tap": function(/* event */) {
+					event.preventDefault();
+
+					collapsibleHeading
+						.toggleClass( "ui-collapsible-heading-collapsed", isCollapse )
+						.find( ".ui-collapsible-heading-status" )
+							.text( isCollapse ? o.expandCueText : o.collapseCueText )
+						.end()
+						.find( ".ui-icon" )
+							.toggleClass( "ui-icon-" + o.expandedIcon, !isCollapse )
+							// logic or cause same icon for expanded/collapsed state would remove the ui-icon-class
+							.toggleClass( "ui-icon-" + o.collapsedIcon, ( isCollapse || o.expandedIcon === o.collapsedIcon ) )
+						.end()
+						// xxx - maintain active class on active tabs in horizontal collapsibles
+						.find( "a" ).first()[o.direction == 'horizontal' ? 'toggleClass':'removeClass']( $.mobile.activeBtnClass , ( o.direction == "horizontal" ? !isCollapse : false ) );
+
+					$this.toggleClass( "ui-collapsible-collapsed", isCollapse );
+					collapsibleContent.toggleClass( "ui-collapsible-content-collapsed", isCollapse ).attr( "aria-hidden", isCollapse );
+
+					collapsibleContent.trigger( "updatelayout" );
+				}
+			})
+			.trigger( o.collapsed ? "collapse" : "expand" );
+			
+		collapsibleHeading
+			.bind( "tap", function( event ) {
 				collapsibleHeading.find( "a" ).first().addClass( $.mobile.activeBtnClass );
-			},
+			})
+			.bind( "click", function( event ) {
 
-			"click": function( event ) {
-
-				var type = collapsibleHeading.hasClass( "ui-collapsible-heading-collapsed" ) ? "expand" : "collapse";
+				var type = collapsibleHeading.is( ".ui-collapsible-heading-collapsed" ) ? "expand" : "collapse";
 
 				collapsible.trigger( type );
 
 				event.preventDefault();
 				event.stopPropagation();
-			}
-		});
-
-		this._setOptions( this.options );
-	},
-
-	_handleExpandCollapse: function( event ) {
-		var isCollapse,
-			o = this.options;
-
-		if ( !event.isDefaultPrevented() ) {
-			isCollapse = ( event.type === "collapse" );
-
-			event.preventDefault();
-
-			this._collapsibleHeading
-				.toggleClass( "ui-collapsible-heading-collapsed", isCollapse )
-				.find( ".ui-collapsible-heading-status" )
-				.text( isCollapse ? o.expandCueText : o.collapseCueText )
-				.end()
-				.find( ".ui-icon" )
-				.toggleClass( "ui-icon-" + o.expandedIcon, !isCollapse )
-				// logic or cause same icon for expanded/collapsed state would remove the ui-icon-class
-				.toggleClass( "ui-icon-" + o.collapsedIcon, ( isCollapse || o.expandedIcon === o.collapsedIcon ) )
-				.end()
-				.find( "a" ).first().removeClass( $.mobile.activeBtnClass );
-
-			this.element.toggleClass( "ui-collapsible-collapsed", isCollapse );
-			this._collapsibleContent
-				.toggleClass( "ui-collapsible-content-collapsed", isCollapse )
-				.attr( "aria-hidden", isCollapse )
-				.trigger( "updatelayout" );
-		}
-	},
-
-	_setOptions: function( o ) {
-		var $el = this.element;
-
-		if ( o.collapsed !== undefined ) {
-			$el.trigger( o.collapsed ? "collapse" : "expand" );
-		}
-
-		return this._super( o );
+			});
 	}
 });
 
-$.mobile.collapsible.initSelector = ":jqmData(role='collapsible')";
-
 //auto self-init widgets
-$.mobile._enhancer.add( "mobile.collapsible", { dependencies: [ "mobile.page","mobile.toolbar" ] });
+$.mobile.document.bind( "pagecreate create", function( e ) {
+	$.mobile.collapsible.prototype.enhanceWithin( e.target );
+});
 
 })( jQuery );
 //>>excludeStart("jqmBuildExclude", pragmas.jqmBuildExclude);
