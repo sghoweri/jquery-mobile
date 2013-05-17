@@ -1,10 +1,10 @@
 /* Swatches */
 
-@include "jquery.mobile.theme.swatch-a";
-@include "jquery.mobile.theme.swatch-b";
-@include "jquery.mobile.theme.swatch-c";
-@include "jquery.mobile.theme.swatch-d";
-@include "jquery.mobile.theme.swatch-e";
+@import "jquery.mobile.theme.swatch-a";
+@import "jquery.mobile.theme.swatch-b";
+@import "jquery.mobile.theme.swatch-c";
+@import "jquery.mobile.theme.swatch-d";
+@import "jquery.mobile.theme.swatch-e";
 
 
 
@@ -92,7 +92,7 @@ a.ui-link-inherit {
 
 /* Icons
 -----------------------------------------------------------------------------------------------------------*/
-@include "jquery.mobile.theme.icons";
+@import "jquery.mobile.theme.icons";
 
 
 
@@ -114,7 +114,7 @@ a.ui-link-inherit {
 
 
 
-@include "jquery.mobile.theme.overlay-modal";
+@import "jquery.mobile.theme.overlay-modal";
 
 
 
@@ -175,5 +175,5 @@ a.ui-link-inherit {
 	opacity: 0.8;
 }
 
-@include "jquery.mobile.theme.popup-arrow";
+@import "jquery.mobile.theme.popup-arrow";
 
